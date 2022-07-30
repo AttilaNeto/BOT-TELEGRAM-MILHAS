@@ -1,0 +1,24 @@
+{
+  "name": "bot-telegram-milhas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "iniciar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netovisk10/BOT-TELEGRAM-MILHAS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/netovisk10/BOT-TELEGRAM-MILHAS/issues"
+  },
+  "homepage": "https://github.com/netovisk10/BOT-TELEGRAM-MILHAS#readme",
+  "dependencies": {
+    "telegraf": "^4.8.6"
+  },
+  "type": "module"
+}

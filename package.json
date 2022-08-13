@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/netovisk10/BOT-TELEGRAM-MILHAS#readme",
   "dependencies": {
+    "better-sqlite3": "^7.6.2",
+    "sqlite3": "^5.0.11",
     "telegraf": "^4.8.6"
   },
   "type": "module"

@@ -1,46 +1,12 @@
-import { Telegraf, Markup, Scenes } from "telegraf"
+import { Telegraf, Scenes, session } from "telegraf"
+import {wizardMilhas} from "./modules/cotacao.js"
 
-BOT_TOKEN = ''
+const BOT_TOKEN = '5513566279:AAEJ8HgHsXwAvjSUHvJEoSmW2NcKjkZVLjg'
 const bot = new Telegraf(BOT_TOKEN)
-let totalVezesUsado = 0
+const Stage = Scenes.Stage
 
-
-//TECLADO BOT
-const botoesProg = Markup.inlineKeyboard([
-    Markup.button.callback ('🟧 SMILES', 'smiles'),
-    Markup.button.callback('🟪 LATAM PASS', 'latam'),
-    Markup.button.callback('🟦 T AZUL', 'azul')   
-],{columns:3})
-
-//COMANDOS TECLADO 
-bot.action('smiles', ctx => {
-    
-    ctx.editMessageText(`✅ Programa escolhido: SMILES. 
-
-Qual a quantidade de milhas para cotação ?
-minimo 20mil | maximo 700 mil`)
-    
-})
-bot.action('azul', ctx => {
-
-    ctx.editMessageText(`✅ Programa escolhido: TUDO AZUL. 
-
-Qual a quantidade de milhas para cotação ?
-minimo 12mil | maximo 360mil`)
-    
-})
-bot.action('latam', ctx => {
-
-    ctx.editMessageText(`✅ Programa escolhido: LATAM PASS. 
-
-Qual a quantidade de milhas para cotação ?
-minimo 5mil | maximo 700mil`)
-    
-})
-
-
-//COMANDOS INICIAL BOT
-bot.start(async ctx =>{
+//COMANDO INICIAL BOT
+bot.start(async ctx => {
     let mensagem = `Seja bem-vindo ${ctx.from.first_name}, meu nome é Josh🤖!
 
     No momento estou em fase de desenvolvimento. Peço que tenha paciência e reporte ao meu criador caso apresentar algum erro. 😉
@@ -55,10 +21,11 @@ bot.start(async ctx =>{
     
     Em breve mais novidades!`
 
-    await ctx.reply(mensagem,botoesProg)
+    await ctx.reply(mensagem)
 })
 
-
-bot.command('cotar', (ctx) => ctx.reply('Cotação'))
-
+const stage = new Stage([wizardMilhas])
+bot.use(session())
+bot.use(stage.middleware())
+bot.command('cotar', Stage.enter('cotacao'));
 bot.launch()

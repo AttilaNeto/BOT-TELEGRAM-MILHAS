@@ -1,7 +1,7 @@
 import { Telegraf, Scenes, session } from "telegraf"
 import {wizardMilhas} from "./modules/cotacao.js"
 
-const BOT_TOKEN = '5513566279:AAEJ8HgHsXwAvjSUHvJEoSmW2NcKjkZVLjg'
+const BOT_TOKEN = ''
 const bot = new Telegraf(BOT_TOKEN)
 const Stage = Scenes.Stage
 
